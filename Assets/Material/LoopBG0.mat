@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LoopBG3
+  m_Name: LoopBG0
   m_Shader: {fileID: 10512, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 0
@@ -40,9 +40,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 29d47c3ac3c41e745a60a4a7d7c420f8, type: 3}
+        m_Texture: {fileID: 2800000, guid: dd4d6808b3de731488aa094a9976dc23, type: 3}
         m_Scale: {x: 3.3, y: 1}
-        m_Offset: {x: 1.5750176, y: 0}
+        m_Offset: {x: 2.8349955, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}

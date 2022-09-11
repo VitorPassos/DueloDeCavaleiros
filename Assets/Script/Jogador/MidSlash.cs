@@ -23,18 +23,16 @@ public class MidSlash : AttackTypes
         for (int i = 0; i < ADELAY; i++)
             yield return new WaitForFixedUpdate();
 
-        Vector3 pos = p.transform.position + Vector3.forward * 0.51f;
-        bool hit1 = Physics.Raycast(pos + Vector3.left * RANGE, Vector3.forward, 2);
-        bool hit2 = Physics.Raycast(pos + Vector3.left * (RANGE/4), Vector3.forward, 2);
-        bool hit3 = Physics.Raycast(pos + Vector3.right * RANGE, Vector3.forward, 2);
-        bool hit4 = Physics.Raycast(pos + Vector3.right * (RANGE/4), Vector3.forward, 2);
+        float ppos = p.transform.position.x;
 
-        if (hit1 || hit2 || hit3 || hit4)                                    //Acertamos alguma coisa?
+        if (ppos < GameManager.instance.Ex + RANGE*2 && ppos > GameManager.instance.Ex - RANGE*2)
         {
-            if (GameManager.instance.EBlock == GameManager.instance.PAttack) //Acertamos o escudo...aumente nosso cooldown para 1.3x do nosso ataque e aplique shaken
+            if (GameManager.instance.EBlock == GameManager.instance.PAttack) //Acertamos o escudo...aumente nosso cooldown para 46 frames e aplique shaken
             {
+                SoundManager.instance.PlaySound("ShieldHit");
                 p.shaken = true;
-                GameManager.instance.PCooldown += COOLD + COOLD / 3;
+                GameManager.instance.PHit = true;
+                GameManager.instance.PCooldown += 46;
             }
             else                                                             //Ataque direto! Diminua o HP do inimigo
             {
@@ -50,6 +48,7 @@ public class MidSlash : AttackTypes
         }
 
         //Debug - ver rays
+        Vector3 pos = p.transform.position + Vector3.forward * 0.51f;
         Debug.DrawRay(pos + Vector3.left * RANGE, Vector3.forward, Color.red, 0.2f);
         Debug.DrawRay(pos + Vector3.left * (RANGE / 4), Vector3.forward, Color.red, 0.2f);
         Debug.DrawRay(pos + Vector3.right * RANGE, Vector3.forward, Color.red, 0.2f);

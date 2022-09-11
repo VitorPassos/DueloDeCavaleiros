@@ -6,6 +6,10 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
+    //Músicas
+    public AudioSource MusDuel;
+
+    //Efeitos sonoros
     public AudioSource SlashM;
     public AudioSource SlashH;
 
@@ -13,6 +17,8 @@ public class SoundManager : MonoBehaviour
     public AudioSource Miss2;
     public AudioSource MissHigh1;
     public AudioSource MissHigh2;
+
+    public AudioSource ShieldHit;
 
     private void Awake()
     {
@@ -57,10 +63,29 @@ public class SoundManager : MonoBehaviour
                     MissHigh2.Play();
                 break;
 
+            case "ShieldHit":
+                ShieldHit.Play();
+                break;
+
             default:
                 Debug.LogError("Audio escpecificado como string não existe");
                 break;
         }
         
+    }
+
+    public void PlayStopMusic(string aud, bool play)
+    {
+        switch(aud)
+        {
+            case "MusDuel":
+                if (play) { MusDuel.Play(); }
+                else { MusDuel.Stop(); }
+                break;
+
+            default:
+                Debug.LogError("Música escpecificada como string não existe");
+                break;
+        }
     }
 }

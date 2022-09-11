@@ -8,6 +8,8 @@ public class BarraHP : MonoBehaviour
     public Image hp;
     private int lastHP;
 
+    public string who;
+
     private void Start()
     {
         HPUpdate();
@@ -15,22 +17,29 @@ public class BarraHP : MonoBehaviour
 
     private void Update()
     {
-        if (lastHP != GameManager.instance.PHp)
+        if ( (who == "player" && lastHP != GameManager.instance.PHp) ||
+             (who == "enemy" && lastHP != GameManager.instance.EHp) )
             HPUpdate();
     }
 
     private void HPUpdate()
     {
+        int myhp = 0;
+        if (who == "player")
+            myhp = GameManager.instance.PHp;
+        else if (who == "enemy")
+            myhp = GameManager.instance.EHp;
+
         foreach (Transform child in transform.GetComponentInChildren<Transform>())
-            Destroy(child.gameObject);
-        if (GameManager.instance.PHp > 0)
+        Destroy(child.gameObject);
+        if (myhp > 0)
         {
-            for (int i = 0; i < GameManager.instance.PHp; i++)
+            for (int i = 0; i < myhp; i++)
             {
                 Image health = Instantiate(hp, gameObject.transform);
                 health.transform.position += new Vector3(55 * i, 0, 0);
             }
-            lastHP = GameManager.instance.PHp;
+            lastHP = myhp;
         }
     }
 }

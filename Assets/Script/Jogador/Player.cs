@@ -62,7 +62,9 @@ public class Player : MonoBehaviour
         } else
             RemShield();
 
-        if (GameManager.instance.PHit) { StartCoroutine("WaitRemPHit"); }   //Fomos acertados. Comece a chacoalhar.
+        if (GameManager.instance.PHit) { StartCoroutine("WaitRemPHit"); }           //Fomos acertados. Inicie a corotina que remove o status de hit.
+
+        GameManager.instance.Px = transform.position.x;                             //Informando nossa posição X ao GM (usado pelo inimigo)
     }
 
     private void FixedUpdate()

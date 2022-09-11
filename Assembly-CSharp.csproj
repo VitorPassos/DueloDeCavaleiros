@@ -53,24 +53,27 @@
     <UnityVersion>2021.2.10f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Inimigo\EnMidSlash.cs" />
     <Compile Include="Assets\Script\Jogador\MidSlash.cs" />
     <Compile Include="Assets\Script\Jogador\MidBlock.cs" />
+    <Compile Include="Assets\Script\Inimigo\EnHighBlock.cs" />
     <Compile Include="Assets\Script\Jogador\Comportamentos\AttackTypes.cs" />
+    <Compile Include="Assets\Script\Inimigo\Comportamento\EnBlockTypes.cs" />
     <Compile Include="Assets\Script\Jogador\HighSlash.cs" />
     <Compile Include="Assets\Script\Jogador\Player.cs" />
     <Compile Include="Assets\Script\Outros\Parallax.cs" />
     <Compile Include="Assets\Script\Jogador\Comportamentos\BlockTypes.cs" />
+    <Compile Include="Assets\Script\Inimigo\EnMidBlock.cs" />
+    <Compile Include="Assets\Script\SoundManager.cs" />
     <Compile Include="Assets\Script\UI\BarraHP.cs" />
+    <Compile Include="Assets\Script\Inimigo\Comportamento\EnAttackTypes.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\Jogador\HighBlock.cs" />
-    <Compile Include="Assets\Script\SoundManager.cs" />
-    <Compile Include="Assets\Script\Inimigo\Comportamento\EnAttackTypes.cs" />
     <Compile Include="Assets\Script\Inimigo\Enemy.cs" />
-    <Compile Include="Assets\Script\Inimigo\Comportamento\EnBlockTypes.cs" />
     <Compile Include="Assets\Script\Inimigo\EnHighSlash.cs" />
-    <Compile Include="Assets\Script\Inimigo\EnMidSlash.cs" />
-    <Compile Include="Assets\Script\Inimigo\EnMidBlock.cs" />
-    <Compile Include="Assets\Script\Inimigo\EnHighBlock.cs" />
+    <Compile Include="Assets\Script\Inimigo\Comportamento\EnMoveType.cs" />
+    <Compile Include="Assets\Script\Inimigo\EnRandomMove.cs" />
+    <Compile Include="Assets\Script\Inimigo\EnSeek.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

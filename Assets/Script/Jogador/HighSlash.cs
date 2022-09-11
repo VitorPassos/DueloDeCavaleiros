@@ -7,7 +7,7 @@ public class HighSlash : AttackTypes
     private static int ID = 2;                          //Tipo de ataque que será comparado no GM
     private static int ADELAY = 10;                     //Atraso do ataque em frames entre o botão ser apertado e a espada usada
     private static int COOLD = 28;                      //Por quantos frames o jogador é travado ao atacar
-    private static float RANGE = 0.2f;                  //Tamanho max do ataque (esq/dir)
+    private static float RANGE = 0.35f;                  //Tamanho max do ataque (esq/dir)
 
     public void Attack(Player p)
     {
@@ -26,18 +26,16 @@ public class HighSlash : AttackTypes
             yield return new WaitForFixedUpdate();
         }
 
-        Vector3 pos = p.transform.position;
-        bool hit1 = Physics.Raycast(pos + (Vector3.up * 0.7f) + (Vector3.right * RANGE), Vector3.forward, 2);
-        bool hit2 = Physics.Raycast(pos + (Vector3.up * 0.175f) + (Vector3.left * RANGE), Vector3.forward, 2);
-        bool hit3 = Physics.Raycast(pos - (Vector3.up * 0.175f) + (Vector3.right * RANGE), Vector3.forward, 2);
-        bool hit4 = Physics.Raycast(pos - (Vector3.up * 0.35f) + (Vector3.left * RANGE), Vector3.forward, 2);
+        float ppos = p.transform.position.x;
 
-        if (hit1 || hit2 || hit3 || hit4)                                    //Acertamos alguma coisa?
+        if (ppos < GameManager.instance.Ex + RANGE*2 && ppos > GameManager.instance.Ex - RANGE*2)
         {
-            if (GameManager.instance.EBlock == GameManager.instance.PAttack) //Acertamos o escudo...aumente nosso cooldown para 1.3x do nosso ataque e aplique shaken
+            if (GameManager.instance.EBlock == GameManager.instance.PAttack) //Acertamos o escudo...aumente nosso cooldown para 46 frames e aplique shaken
             {
+                SoundManager.instance.PlaySound("ShieldHit");
                 p.shaken = true;
-                GameManager.instance.PCooldown += COOLD + COOLD / 3;    
+                GameManager.instance.PHit = true;
+                GameManager.instance.PCooldown += 46;    
             }
             else                                                             //Ataque direto! Diminua o HP do inimigo
             {
@@ -53,9 +51,10 @@ public class HighSlash : AttackTypes
         }
 
         //Debug - ver rays
-        Debug.DrawRay(pos + (Vector3.up * 0.7f) + (Vector3.right * RANGE), Vector3.forward, Color.red, 0.2f);
-        Debug.DrawRay(pos + (Vector3.up * 0.35f) + (Vector3.left * RANGE), Vector3.forward, Color.red, 0.2f);
-        Debug.DrawRay(pos - (Vector3.up * 0.35f) + (Vector3.right * RANGE), Vector3.forward, Color.red, 0.2f);
-        Debug.DrawRay(pos - (Vector3.up * 0.7f) + (Vector3.left * RANGE), Vector3.forward, Color.red, 0.2f);
+        Vector3 pos = p.transform.position + Vector3.forward * 0.51f;
+        Debug.DrawRay(pos + (Vector3.up * 0.7f) + (Vector3.right * RANGE/2), Vector3.forward, Color.red, 0.2f);
+        Debug.DrawRay(pos + (Vector3.up * 0.35f) + (Vector3.left * RANGE/2), Vector3.forward, Color.red, 0.2f);
+        Debug.DrawRay(pos - (Vector3.up * 0.35f) + (Vector3.right * RANGE/2), Vector3.forward, Color.red, 0.2f);
+        Debug.DrawRay(pos - (Vector3.up * 0.7f) + (Vector3.left * RANGE/2), Vector3.forward, Color.red, 0.2f);
     }
 }
