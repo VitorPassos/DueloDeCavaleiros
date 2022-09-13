@@ -15,6 +15,7 @@ public class EnMidBlock : EnBlockTypes
     {
         while (e.decisionTimer > 0 && !GameManager.instance.EHit)
         {
+            e.EAnim.Play("EAnim.MidShield");
             if (GameManager.instance.PHit)
             {
                 e.decisionTimer = e.decisionSpeed + Random.Range(-20, 21);

@@ -8,6 +8,7 @@ public class MidBlock : BlockTypes
     {
         p.shield = true;
         GameManager.instance.PBlock = 1;
+        p.PAnim.Play("PAnim.ShieldMid");
 
         //Debug - desenha escudo
         Vector3 l = p.transform.position;

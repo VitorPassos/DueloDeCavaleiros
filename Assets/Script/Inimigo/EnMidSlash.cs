@@ -27,6 +27,9 @@ public class EnMidSlash : EnAttackTypes
         Debug.DrawRay(pos + Vector3.right * RANGE, Vector3.forward, Color.blue, (float)ADELAY / 50);
         Debug.DrawRay(pos + Vector3.right * (RANGE / 4), Vector3.forward, Color.blue, (float)ADELAY / 50);
 
+        GameManager.instance.ECooldown = COOLD;
+
+        e.EAnim.Play("EAnim.MidSlash");
         GameManager.instance.EAttack = ID;
         float epos = e.transform.position.x;
 

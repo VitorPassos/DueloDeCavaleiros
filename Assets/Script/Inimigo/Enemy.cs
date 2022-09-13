@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     public float maxReach = 2;
     public float topSpeed = 2.3f;
     public Vector3 move;
+    public Animator EAnim;
 
     Vector3 shake;
     float startY;
@@ -43,6 +44,7 @@ public class Enemy : MonoBehaviour
             {
                 move.y = startY + Mathf.Sin(bob * bobFreq) / bobForce;
                 transform.position = move;
+                EAnim.Play("EAnim.Idle");
             }
         }
 
@@ -101,27 +103,27 @@ public class Enemy : MonoBehaviour
 
                 //TO DO - colocar um IF aqui para checar a posição do inimigo antes de realizar uma ação para impedir "snap" de posições
 
-                if (choice < 15)                                            //Mexa (0-15 C)
-                {
-                    movement = new EnSeek();
-                    movement.RandomMove(this);
-                }
-                else if (choice < 15 + 15)                                  //Escudo acima (15-30 C)                   
+                //if (choice < 15)                                            //Mexa (0-15 C)
+                //{
+                //movement = new EnSeek();
+                //movement.RandomMove(this);
+                //}
+                /*else*/ if (choice < 15)                                   //Escudo acima (15-30 C)                   
                 {
                     block = new EnHighBlock();
                     block.Block(this);
                 }
-                else if (choice < 15 + 30)                                  //Escudo meio (30-45 C)
+                else if (choice < 15 + 15)                                  //Escudo meio (30-45 C)
                 {
                     block = new EnMidBlock();
                     block.Block(this);
                 }
-                else if (choice < 15 + 45)                                  //Ataque acima (45-60 C)
+                else if (choice < 15 + 30)                                  //Ataque acima (45-60 C)
                 {
                     attack = new EnHighSlash();
                     attack.Attack(this);
                 }
-                else if (choice < 15 + 60)                                  //Ataque meio (60-75 C)
+                else if (choice < 15 + 45)                                  //Ataque meio (60-75 C)
                 {
                     attack = new EnMidSlash();
                     attack.Attack(this);

@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public BlockTypes block;                    //Strategy - escudo
     public bool shield = false;                 //Jogador está defendendo?
     public bool shaken = false;                 //Jogador está chacoalhando?
+    public Animator PAnim;
 
     Vector3 move;                               //Movimento geral
     Vector3 shake;                              //Jogador bateu em um escudo
@@ -31,6 +32,9 @@ public class Player : MonoBehaviour
         {
             if (!shield)
             {
+                //Animação idle
+                PAnim.Play("PAnim.Idle");
+
                 //Movimento
                 move.x += Input.GetAxis("Horizontal") * Time.deltaTime * speed;     //Deslocamento
                 move.x = Mathf.Clamp(move.x, -maxReach, maxReach);                  //Distância máxima de deslocamento em X

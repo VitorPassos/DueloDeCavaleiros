@@ -19,6 +19,7 @@ public class HighSlash : AttackTypes
     private IEnumerator Slash(Player p)
     {
         GameManager.instance.PAttack = ID;
+        p.PAnim.Play("PAnim.UpSlash");
 
         for (int i = 0; i < ADELAY; i++)
         {

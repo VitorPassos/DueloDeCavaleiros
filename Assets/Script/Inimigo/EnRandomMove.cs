@@ -20,7 +20,7 @@ public class EnRandomMove : EnMoveType
         while (e.decisionTimer > 0)
         {
             e.move.x += randDir * Time.deltaTime * randSpeed;
-            e.move.x = Mathf.Clamp(e.move.x, GameManager.instance.Px - e.maxReach, GameManager.instance.Px + e.maxReach);
+            e.move.x = Mathf.Clamp(e.move.x, -e.maxReach, e.maxReach);
             yield return new WaitForFixedUpdate();
         }
 

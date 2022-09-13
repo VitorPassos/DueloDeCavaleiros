@@ -19,6 +19,7 @@ public class MidSlash : AttackTypes
     private IEnumerator Slash(Player p)
     {
         GameManager.instance.PAttack = ID;
+        p.PAnim.Play("PAnim.MidSlash");
 
         for (int i = 0; i < ADELAY; i++)
             yield return new WaitForFixedUpdate();

@@ -26,6 +26,9 @@ public class EnHighSlash : EnAttackTypes
         Debug.DrawRay(pos - (Vector3.up * 0.35f) + (Vector3.right * RANGE/2), Vector3.forward, Color.blue, (float)ADELAY / 50);
         Debug.DrawRay(pos - (Vector3.up * 0.7f) + (Vector3.left * RANGE/2), Vector3.forward, Color.blue, (float)ADELAY / 50);
 
+        GameManager.instance.ECooldown = COOLD;
+
+        e.EAnim.Play("EAnim.UpSlash");
         GameManager.instance.EAttack = ID;
         float epos = e.transform.position.x;
 

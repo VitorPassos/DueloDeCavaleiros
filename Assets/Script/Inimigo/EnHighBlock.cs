@@ -15,6 +15,7 @@ public class EnHighBlock : EnBlockTypes
     {
         while (e.decisionTimer > 0 && !GameManager.instance.EHit)
         {
+            e.EAnim.Play("EAnim.UpShield");
             if (GameManager.instance.PHit)
             {
                 e.decisionTimer = e.decisionSpeed + Random.Range(-20, 21);

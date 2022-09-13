@@ -8,6 +8,7 @@ public class HighBlock : BlockTypes
     {
         p.shield = true;
         GameManager.instance.PBlock = 2;
+        p.PAnim.Play("PAnim.ShieldUp");
 
         //Debug - desenha escudo
         Vector3 l = p.transform.position;
